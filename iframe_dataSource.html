@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>数据源</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="css/webkit_scrollbar.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.cookie.js"></script>
+
+    <!-- DLShouWen Grid -->
+    <script type="text/javascript" src="../js/dlshouwengrid/dtGrid/dlshouwen.grid.min.js"></script>
+    <script type="text/javascript" src="../js/dlshouwengrid/dtGrid/i18n/en.js"></script>
+    <link rel="stylesheet" type="text/css" href="../js/dlshouwengrid/dtGrid/dlshouwen.grid.min.css" />
+
+    <!-- datePicker -->
+    <script type="text/javascript" src="../js/dlshouwengrid/dtGrid/dependents/datePicker/WdatePicker.js" defer="defer"></script>
+    <link rel="stylesheet" type="text/css" href="../js/dlshouwengrid/dtGrid/dependents/datePicker/skin/WdatePicker.css" />
+    <link rel="stylesheet" type="text/css" href="../js/dlshouwengrid/dtGrid/dependents/datePicker/skin/default/datepicker.css" />
+
+    <!-- font-awesome -->
+    <link rel="stylesheet" type="text/css" href="../js/dlshouwengrid/dtGrid/dependents/fontAwesome/css/font-awesome.min.css" media="all" />
+
+    <!-- i18n -->
+    <script type="text/javascript" src="../js/dlshouwengrid/dtGrid/i18n/en.js"></script>
+    <script type="text/javascript" src="../js/dlshouwengrid/dtGrid/i18n/zh-cn.js"></script>
+
+    <!-- fileinput js -->
+    <link rel="stylesheet" type="text/css" href="css/zwj_fileinput.css" />
+    <script type="text/javascript" src="js/zwj_fileinput.js"></script>
+
+    <!-- alertify js -->
+    <link href="../css/alertify.core.css" rel="stylesheet" type="text/css">
+    <link href="../css/alertify.default.css" rel="stylesheet" type="text/css" id="toggleCSS">
+    <script type="text/javascript" src="../js/alertify.min.js"></script>
+
+    <link href="js/rMenu/rMenu.css" rel="stylesheet">
+
+    <link href="css/dataSource.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/dataSource.js"></script>
+</head>
+<body>
+<div id="main">
+    <div id="head">
+        <div id="title">数据源管理</div>
+        <div id="reduction" class="pointer">
+            <i class="glyphicon glyphicon-repeat"></i>
+            <span>还原列表</span>
+        </div>
+
+        <div id="wrap_add_data">
+            <i class="glyphicon glyphicon-plus-sign"></i>
+            <span id="add_data" class="pointer">添加数据源</span>
+        </div>
+    </div>
+    <div id="dlshouwen_grid">
+        <div id="gridContainer" class="dlshouwen-grid-container"></div>
+        <div id="gridToolBarContainer" class="dlshouwen-grid-toolbar-container"></div>
+    </div>
+
+    <div id="dlshouwen_grid_es">
+        <div id="gridContainer_es" class="dlshouwen-grid-container"></div>
+        <div id="gridToolBarContainer_es" class="dlshouwen-grid-toolbar-container"></div>
+    </div>
+
+    <div id="text"></div>
+</div>
+
+<!-- 下面的upload div -->
+<div id="tooptip_div">
+    <a href="#" class="tooltip-test" data-toggle="tooltip" data-placement="left" title="文件全部上传完毕"> </a>
+</div>
+<div class="upload_ing" id="upload_ing">
+    <div class="upload_ing_head pointer" id="upload_ing_head">
+        <i class="glyphicon glyphicon-fast-backward"></i>
+    </div>
+    <div class="upload_ing_body">
+        <div>正在上传的文件</div>
+        <div id="upload_ing_body"></div>
+    </div>
+</div>
+
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    请选择数据添加方式
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id="modal_div">
+                    <div id="upload" class="pointer">
+                        <i class="glyphicon glyphicon-cloud-upload"></i><span>上传数据</span>
+                    </div>
+                    <div id="public" class="pointer">
+                        <i class="glyphicon glyphicon-th"></i><span>公共数据</span>
+                    </div>
+                    <!--  <div id="sql" class="pointer">
+                        <i class="glyphicon glyphicon-list"></i><span>ElasticSearch</span>
+                    </div> -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary"
+                        data-dismiss="modal">关闭
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="uploadModel" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="uploadModelLabel">
+                    上传本地数据
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id="input">
+                    <div class="input-group ">
+                        <div tabindex="500" class="form-control file-caption  kv-fileinput-caption">
+                            <div class="file-caption-name"></div>
+                        </div>
+                        <div class="input-group-btn">
+                            <button type="submit" tabindex="500" title="上传选中文件" class="btn btn-default fileinput-upload fileinput-upload-button" id="upload_file">
+                                <i class="glyphicon glyphicon-upload"></i>
+                                <span class="hidden-xs upload_button">上传</span>
+                            </button>
+                            <div tabindex="500" class="btn btn-primary btn-file">
+                                <i class="glyphicon glyphicon-folder-open"></i>
+                                <span class="hidden-xs upload_button">选择 …</span>
+                                <input type="file" id="input_file" multiple = "multiple" accept=".txt,.doc,.csv,.xls,.xlsx,.json,.docx"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary"
+                        data-dismiss="modal">关闭
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="publicModel" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="publicModelLabel">
+                    公共数据
+                </h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary"
+                        data-dismiss="modal">关闭
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="EsHeaderModel" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="EsHeaderModelLabel">
+                    数据头部信息
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id="dlshouwen_grid_EsHeader">
+                    <div id="gridContainer_EsHeader" class="dlshouwen-grid-container"></div>
+                    <div id="gridToolBarContainer_EsHeader" class="dlshouwen-grid-toolbar-container"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary"
+                        data-dismiss="modal">关闭
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<div class="modal fade" id="lookdata" tabindex="-1" role="dialog">
+    <div class="modal-dialog"  style="width:900px;height: 800px">
+        <div class="modal-content" style="width:900px;height: 800px">
+            <div class="modal-body" style="width:100%;height: 720px">
+                <div class="lookdata" style="width:900px; height:700px; padding: 30px">
+                </div>
+                <iframe id="id_iframe" name="nm_iframe" style="display:none;"></iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<!--右键菜单-->
+<div id="rMenu">
+    <menu id="menu">
+        <ul id="ul">
+            <li  class="menu-li" id="m_main_map">
+                <button type="button" class="menu-button main_map">
+                    <i class="glyphicon glyphicon-download"></i>
+                    <span class="main_map">下载</span>
+                </button>
+            </li>
+        </ul>
+    </menu>
+</div>
+
+</body>
+<script type="text/javascript">
+    $(function () { $("[data-toggle='tooltip']").tooltip('hide'); });
+</script>
+</html>

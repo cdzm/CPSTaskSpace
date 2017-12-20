@@ -1,0 +1,257 @@
+body{
+    font-family:"Proxima Nova", "Helvetica Neue", Helvetica,"PingFang SC","Microsoft YaHei","微软雅黑", Arial, sans-serif;
+}
+#main{
+    height: 100%;
+    width: 100%;
+    background: #ffffff;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    min-width: 800px;
+}
+
+#header{
+    height: 8%;
+    width: 100%;
+    position: absolute;
+    background: #009999;
+}
+
+#header_logo{
+    margin-left: 30px;
+    height: 100%;
+    width: 38%;
+    font-family: 'microsoft yahei';
+    color:#00FF99;
+    position: absolute;
+}
+
+#header_logo #img{
+    height: 100%;
+    width: 110px;
+    float: left;
+    position: absolute;
+}
+
+#img img{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+
+#head_wrap{
+    height: 100%;
+    width: 290px;
+    margin-left: 101px;
+    position: absolute;
+    vertical-align: middle;
+}
+
+#head_wrap img{
+    height: 70%;
+    width: 100%;
+    top: 20%;
+    position: absolute;
+}
+
+#header_login_div{
+    width: 120px;
+    font-family: 'microsoft yahei';
+    font-size: 15px;
+    right: 3%;
+    top: 40%;
+    position: absolute;
+}
+
+#header_login_div>a{
+    color: #ffffff;
+    text-decoration: none;
+}
+
+#member:hover{
+    cursor: default;
+}
+
+#left{
+    width: 10%;
+    height: 100%;
+    float: left;
+    background: rgba(17,17,17,0.9);
+
+}
+
+#left_content{
+    top: 10%;
+    position: absolute;
+    color: #ffffff;
+}
+
+#left_content .content{
+    margin-top: 10px;
+    width: 100%;
+    margin-left: 10%;
+    font-family: 'microsoft yahei';
+    height: 30px;
+    vertical-align: middle;
+    font-size: 1.12em;
+}
+
+.algorithm{
+    margin-top:3px;
+    margin-bottom: 15px;
+    width:100%;
+    margin-left:40%;
+    vertical-align:middle;
+    cursor: pointer;
+}
+.algorithm li{
+    list-style-type:none;
+    display:block;
+    margin-top:3px;
+}
+.dot{
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    margin-right: 8px;
+    background: #188e8e;
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+#right{
+    width: 90%;
+    height: 100%;
+    float: left;
+}
+
+#right_content{
+    top: 8%;
+    width: 90%;
+    height: 92%;
+    position: absolute;
+    color: #ffffff;
+}
+
+#background{
+    background: rgba(17,17,17,0.3);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 10;
+
+}
+
+#background>img{
+    width: 96%;
+    height: 96%;
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    border-radius: 5px;
+}
+
+
+#text{
+    position: absolute;
+    min-width: 500px;
+    min-height: 300px;
+    text-align: center;
+    top:25%;
+    left: 30%;
+    z-index: 50;
+}
+
+#text h1{
+    font-family: 'microsoft yahei';
+    font-weight: 600;
+    color:#ffffff;
+    font-size: 40px;
+}
+
+#text h4{
+    font-family: Arial;
+    color:#f0a30a;
+    font-size: 24px;
+}
+
+
+#iframe{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+
+
+
+
+
+
+
+div#rMenu {
+    position:fixed;
+    visibility:hidden;
+    top:0;
+    text-align: left;
+    padding: 2px;
+    width: 200px;
+}
+
+div#rMenu menu{
+    position: absolute;
+    width: 200px;
+    padding: 2px;
+    margin: 0;
+    border: 1px solid #bbb;
+    background: #eee;
+    background: -webkit-linear-gradient(to bottom, #fff 0%, #e5e5e5 100px, #e5e5e5 100%);
+    background: linear-gradient(to bottom, #fff 0%, #e5e5e5 100px, #e5e5e5 100%);
+    z-index: 100;
+    border-radius: 3px;
+    box-shadow: 1px 1px 4px rgba(0,0,0,.2);
+    -webkit-transform: translate(0, 15px) scale(.95);
+    transform: translate(0, 15px) scale(.95);
+    transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+
+}
+
+div ul{
+    width: 100%;
+    padding: 0px;
+    margin: 0;
+}
+div ul li{
+    display: block;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+}
+
+div#rMenu button{
+    background: none;
+    line-height: normal;
+    overflow: visible;
+    display: block;
+    width: 100%;
+    color: #444;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    text-align: left;
+    cursor: pointer;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 8px;
+    border-radius: 3px;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.current{
+    color: #337ab7;
+}

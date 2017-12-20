@@ -1,0 +1,33 @@
+body{
+    font-family: 'microsoft yahei',Helvetica,Arial,sans-serif;
+}
+
+#main{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    font-family: "microsoft yahei";
+}
+
+#dlshouwen_grid{
+    width: 96%;
+    margin-top: 30px;
+    margin-left: 1%;
+    min-height: 200px;
+    color: #333333;
+    position: absolute;
+    font-family: 'microsoft yahei';
+}
+
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>tbody>tr>td.extra-column{
+    font-family: 'microsoft yahei';
+    font-weight: 500;
+}
+
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
+    font-family: 'microsoft yahei';
+}
+
+.modal-dialog{
+    font-family: 'microsoft yahei';
+}

@@ -1,0 +1,20 @@
+/*webkit 滚动条*/
+::-webkit-scrollbar{
+    width: 10px;
+    background: rgba(0,0,0,0.3);;
+}
+
+::-webkit-scrollbar-track{
+    border-radius: 3px;
+    background-color: #BBBBBB;
+}
+
+::-webkit-scrollbar-button{
+}
+
+::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background-color: #555;
+}
+
+/*firefox 滚动条*/

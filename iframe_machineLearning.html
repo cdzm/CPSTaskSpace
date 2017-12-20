@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>机器学习</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../modules/loader.css" type="text/css" rel="stylesheet">
+    <link href="../css/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/machineLearning.css" rel="stylesheet" type="text/css">
+
+
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/base64.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+
+    <!-- DLShouWen Grid -->
+    <script type="text/javascript" src="../js/dlshouwengrid/dtGrid/dlshouwen.grid.min.js"></script>
+    <script type="text/javascript" src="../js/dlshouwengrid/dtGrid/i18n/en.js"></script>
+    <link rel="stylesheet" type="text/css" href="../js/dlshouwengrid/dtGrid/dlshouwen.grid.min.css" />
+    <script type="text/javascript" src="../js/dlshouwengrid/dtGrid/i18n/zh-cn.js"></script>
+
+    <!-- alertify js -->
+    <link href="../css/alertify.core.css" rel="stylesheet" type="text/css">
+    <link href="../css/alertify.default.css" rel="stylesheet" type="text/css" id="toggleCSS">
+    <script type="text/javascript" src="../js/alertify.min.js"></script>
+
+    <script type="text/javascript" src="../modules/loader.js"></script>
+    <script type="text/javascript" src="js/machineLearning.js"></script>
+</head>
+<body>
+<div id="img"></div>
+<div id="main">
+    <div id="left" >
+        <div class=" hidden-sm hidden-xs">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                            class="color1 pointer">
+                            <span class="glyphicon glyphicon-folder-open"></span>&nbsp;<span id="practice_data">训练数据集</span>
+                        </a>
+                    </h4>
+                </div>
+            </div>
+            <div class="panel-body-suanfa">
+                <div class="list" style="width:100%;height: 40px;line-height: 40px" ><i class="fa fa-circle"></i>&nbsp;<span class="pointer task85" id="SelfRegression">自相关计算</span></div>
+                <div class="list"><i class="fa fa-circle"></i>&nbsp;<span class="pointer task85" id="CoRegression">互相关计算</span></div>
+            </div>
+        </div>
+    </div>
+    <div id="right">
+        <div id="task">
+            <div id="task_head">
+                <span class="pointer" id="task_run">
+                    <i class="glyphicon glyphicon-play"></i>
+                    <span>运行</span>
+                </span>
+                <span class="pointer" id="task_clear">
+                    <i class="glyphicon glyphicon-trash"></i>
+                    <span>清空</span>
+                </span>
+            </div>
+
+            <div id="task_content">
+                <div  class="panel panel-primary" >
+                    <div class="panel-heading">
+                        <span>任务生成</span>
+                    </div>
+                    <div class="panel-body" >
+                        <div class="nav_one nav_li_wrap">
+                            <div id="data_source" class="task">
+                                <div class="task_title">训练数据集</div>
+                                <div id="data_info" class="task_body">
+                                    <div id="gridContainer_data_info" class="dlshouwen-grid-container"></div>
+                                    <div id="gridToolBarContainer_data_info" class="dlshouwen-grid-toolbar-container"></div>
+                                </div>
+                            </div>
+                            <div id="feature" class="task">
+                                <div class="task_title">特征提取</div>
+                                <div id="feature_info" class="task_body">
+
+                                </div>
+                                <div id="feature_explain">
+                                </div>
+                            </div>
+                            <div id="ml_model" class="task">
+                                <div class="task_title">机器学习模型选择</div>
+                                <div id="ml_model_info" class="task_body">
+                                    <div>模型:<div id="model_info"></div></div>
+                                    <div>参数:<div id="model_para_info"></div></div>
+                                </div>
+                                <div id="ml_model_attention"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="myAlert" class="alert alert-danger">
+                <a href="#" class="close" onclick="$('#myAlert').fadeOut(1000)">&times;</a>
+                <strong style="color: red">错误 ！&nbsp;&nbsp;&nbsp;</strong><span id="alert_info"></span>
+            </div>
+        </div>
+        <div id="right_parameter">
+            <div id="parameter_head">
+                <i class="glyphicon glyphicon-fast-forward pointer" id="right_parameter_close"></i><span id="parameter_head_title">算法名</span>
+            </div>
+            <div id="parameter_para">
+                <p>参数：</p>
+                <div id="parameter_para_div" style="overflow: scroll;"></div>
+            </div>
+            <div id="parameter_explain">
+                <p>说明：</p>
+                <div id="parameter_explain_div"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="taskSubmitModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    任务已经到后台提交
+                </h4>
+            </div>
+            <div class="modal-body">
+                <label>任务id:&nbsp;&nbsp;</label><span id="model_task_id"></span>
+                <br>
+                <p>(请记住您的任务id，在<span style="color: #337ab7"><a href="report.html" style="text-decoration: none" target="_blank">报表</a></span>窗口可以查看其状态，及处理结果)</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary"
+                        data-dismiss="modal">关闭
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<!-- 模态框（Modal）训练数据集 -->
+<div class="modal fade" id="practiceDataModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title">
+                    训练数据集（来自数据源）
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id="practiceDataList">
+                    <div id="gridContainer" class="dlshouwen-grid-container"></div>
+                    <div id="gridToolBarContainer" class="dlshouwen-grid-toolbar-container"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary"
+                        data-dismiss="modal">关闭
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<!-- 模态框（Modal）表头信息 -->
+<div class="modal fade" id="fileHeaderModel" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="publicModelLabel">
+                    文件表头信息
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id="fileHeaderText">
+                    <div id="gridContainerHeader" class="dlshouwen-grid-container"></div>
+                    <div id="gridToolBarContainerHeader" class="dlshouwen-grid-toolbar-container"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary"
+                        data-dismiss="modal" id="header_select">确定
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+
+</body>
+</html>

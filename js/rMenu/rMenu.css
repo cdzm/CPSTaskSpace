@@ -1,0 +1,66 @@
+div#rMenu {
+    position:fixed;
+    visibility:hidden;
+    top:0;
+    text-align: left;
+    padding: 2px;
+    width: 200px;
+    opacity: 0.8;
+}
+
+div#rMenu menu{
+    position: absolute;
+    width: 200px;
+    padding: 2px;
+    margin: 0;
+    border: 1px solid rgba(187 ,187, 187,0.3);
+    background: #eee;
+    background: -webkit-linear-gradient(to bottom, #fff 0%, #e5e5e5 100px, #e5e5e5 100%);
+    background: linear-gradient(to bottom, #fff 0%, #e5e5e5 100px, #e5e5e5 100%);
+    z-index: 100;
+    border-radius: 3px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,.6);
+    -webkit-transform: translate(0, 15px) scale(.95);
+    transform: translate(0, 15px) scale(.95);
+    transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+
+}
+
+div >menu >ul{
+    width: 100%;
+    padding: 0px;
+    margin: 0;
+}
+
+div >menu >ul >li{
+    display: block;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+}
+
+div >menu >ul >li:hover{
+    display: block;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    background: rgba(37,108,183,0.8);
+}
+
+div#rMenu button{
+    background: none;
+    line-height: normal;
+    overflow: visible;
+    display: block;
+    width: 100%;
+    color: #f0a30a;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    text-align: left;
+    cursor: pointer;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 8px;
+    border-radius: 3px;
+}
+

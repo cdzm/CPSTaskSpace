@@ -1,0 +1,364 @@
+/*主要部分*/
+body{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#img{
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    position: absolute;
+}
+#img>img{
+    width: 100%;
+    height: 100%;
+}
+
+#main{
+    width: 100%;
+    height: 100%;
+    background: rgba(51,51,51,0.2);
+    color: #DDDDDD;
+    position: absolute;
+    overflow-y: auto;
+}
+
+
+/*left算法选择那*/
+#left{
+    width: 7%;
+    height: 100%;
+    position: absolute;
+    background: rgba(0,0,0,0.9);
+    font-family: 'microsoft yahei';
+    padding: 0;
+}
+
+#left .panel .panel-title{
+    font-size: 0.7em;
+}
+
+#left .panel{
+    border: 0;
+    background:rgba(74,88,107,0);
+    margin-bottom: 0;
+    min-width: 120px;
+}
+
+#left .panel-heading{
+    background: rgba(0,0,0,0);
+    border-bottom: 0 solid;
+}
+
+#left .panel-default > .panel-heading {
+    background:rgba(74,88,107,0);
+    color:#ffffff;
+}
+
+#left .panel-title>a{
+    outline: none;
+    width: 100%;
+}
+
+#left .panel-body{
+    color: #ffffff;
+    font-size: 0.5em;
+    padding: 0 10px 5px 13px;
+    color: #0099CC;
+}
+
+.text_title:hover{
+    text-decoration: aliceblue;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+#left .panel .color1{
+
+}
+
+#left .panel .color2{
+
+}
+
+#left .panel .color3{
+
+}
+
+#left .panel .color4{
+
+}
+
+#left .panel .list{
+    margin-top: 3px;
+}
+
+
+/*right*/
+#right{
+    width: 93%;
+    height: 100%;
+    margin-left: 7%;
+    position: absolute;
+}
+
+#task{
+    height: 100%;
+    width: 100%;
+    margin-right: 15%;
+    font-family: 'microsoft yahei';
+    position: absolute;
+    overflow-y: scroll;
+}
+
+#task_head{
+    width: 100%;
+    height: 30px;
+    background: rgba(248,248,248,0.8);
+}
+
+#task_head>span{
+    margin-left: 8px;
+    margin-right: 20px;
+    padding: 5px;
+    float: left;
+    font-family: 'microsoft yahei';
+    color: #00a2ca;
+}
+
+#task_head>span>i{
+    color:#0099CC;
+}
+
+#task_head>span>span{
+    margin-left: 2px;
+}
+
+#task_run>.runing{
+    color: #CCCCCC;
+    cursor: wait;
+}
+
+#myAlert{
+    display: none;
+    position: absolute;
+    width: 100%;
+    background: rgba(169,68,66,0.3);
+    color: #ffffff;
+}
+
+#task_content{
+    font-size: 1.22em;
+    width: 96%;
+    height: 46%;
+    position: absolute;
+    margin-left: 2%;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+#task_content .panel{
+    color: #337ab7;
+    border: 1px solid rgba(51,122,183,0.3);
+    min-height: 800px;
+    box-shadow: 0 0 15px rgba(34,34,34,0.5);
+    background: rgba(255,255,255,0.8);
+}
+
+#task_content .panel .panel-heading{
+    background-color: rgba(51,122,183,0.9);
+}
+
+#task_content .panel-body{
+    height: 100%;
+}
+
+#task_content .panel-body .task{
+    margin-bottom: 20px;
+}
+
+#task_content .panel-body .task .task_title{
+    font-size: 0.88em;
+}
+
+#task_content .panel-body .task  .task_body{
+    font-size: 0.82em;
+    margin-left: 10px;
+    color: #00a2ca;
+    margin-top: 15px;
+}
+
+#data_source{
+    border-bottom: 2px solid rgba(0,162,202,0.8);
+    padding-bottom: 20px;
+}
+
+#feature{
+    margin-top: 10px;
+    min-height: 150px;
+    border-bottom: 2px solid rgba(0,162,202,0.8);
+}
+
+#feature_info{
+    margin-top: 10px;
+}
+
+#feature_explain{
+    font-size: 13px;
+    color: #00a2ca;
+    margin-top: 100px;
+}
+
+#ml_model{
+    margin-top: 10px;
+    min-height: 200px;
+}
+
+#model_info{
+    margin-left: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#model_para_info{
+    margin-left: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#task_content .panel-body .nav_li_wrap .task span{
+    margin-top: 10px;
+    position: relative;
+}
+
+
+/*隐藏的参数设置*/
+#right_parameter{
+    display: none;
+    width: 15%;
+    height: 100%;
+    right: 0;
+    border: 1px solid #DDDDDD;
+    background: #FFFFFF;
+    color: #222222;
+    font-family: 'microsoft yahei';
+    position: absolute;
+}
+
+#parameter_head{
+    width: 100%;
+    height: 30px;
+    padding: 6px;
+    background: #EEEEEE;
+    position: absolute;
+}
+
+#parameter_head_title{
+    float: right;
+}
+
+#parameter_para{
+    top: 30px;
+    margin: 15px;
+    width: 90%;
+    height: 50%;
+    position: absolute;
+}
+
+#parameter_para_div{
+    width: 100%;
+    height: 90%;
+    border: 2px solid #BBBBBB;
+    border-radius: 5px;
+    padding: 15px;
+    position: absolute;
+}
+
+#parameter_para_div>input{
+    outline: none;
+    padding: 0 0 0 5px;
+    width: 90%;
+    height: 30px;
+    margin-top: 5px;
+    border: 0;
+    color: #CC6633;
+    border-bottom: 2px solid #AAAAAA;
+}
+
+#parameter_para_div>div>input{
+    outline: none;
+    padding: 0 0 0 5px;
+    width: 90%;
+    height: 30px;
+    margin-top: 5px;
+    border: 0;
+    color: #CC6633;
+    border-bottom: 2px solid #AAAAAA;
+}
+
+#parameter_para_div>.para_div_wrap>.wrap_list>label{
+    margin-bottom: 0;
+    margin-top: 0;
+    cursor: pointer;
+}
+
+#parameter_para_div>.para_div_wrap>.wrap_list p{
+    margin: 0 0 1px;
+    font-weight: 600;
+    font-size: 0.8em;
+}
+
+#parameter_para_div .para_div_wrap{
+    width: 100%;
+    height: 85%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#parameter_para_div .wrap_list{
+    border-bottom: 1px solid #AAAAAA;
+}
+
+#parameter_explain{
+    top: 55%;
+    margin: 15px;
+    width: 90%;
+    height: 40%;
+    position: absolute;
+}
+
+#parameter_explain_div{
+    width: 100%;
+    height: 98%;
+    border: 2px solid #BBBBBB;
+    border-radius: 5px;
+    padding: 15px;
+    position: absolute;
+    overflow-y: scroll;
+}
+
+
+/*模态框*/
+#taskSubmitModal{
+    font-family: 'microsoft yahei';
+}
+
+#practiceDataModal .modal-dialog{
+    width: 900px;
+}
+
+#fileHeaderModel .modal-dialog{
+    width: 1000px;
+}
+
+.dlshouwen-grid-headers>.check-column{
+    background: #00a2ca;
+}
+
+.dlshouwen-grid-row .column{
+    color: #c9302c;
+}

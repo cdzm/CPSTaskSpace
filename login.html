@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>log-in</title>
+    <link rel="stylesheet" href="css/common_form.css">
+</head>
+<body>
+    <header>
+        <div class="header-line"></div>
+    </header>
+    <div class="content">
+        <h1 class="content-title">登录</h1>
+        <div class="content-form">
+            <form>
+                <div id="change_margin_1">
+                    <input class="user" type="text" name="user" placeholder="请输入用户名" onblur="oBlur_1()" onfocus="oFocus_1()">
+                </div>
+                <!-- input的value为空时弹出提醒 -->
+                <p id="remind_1"></p>
+                <div id="change_margin_2">
+                    <input class="password" type="password" name="password" placeholder="请输入密码" onblur="oBlur_2()" onfocus="oFocus_2()">
+                </div>
+                <!-- input的value为空时弹出提醒 -->
+                <p id="remind_2"></p>
+                <div id="change_margin_3">
+                    <input class="content-form-signup" value="登录">
+                </div>
+            </form>
+        </div>
+        <div class="content-login-description">没有账户？</div>
+        <div><a class="content-login-link" href="sign_up.html">注册</a></div>
+    </div>
+<script src='../js/jquery.min.js'></script>
+<script src='./js/md5.js'></script>
+<script>
+
+    //用户框失去焦点后验证value值
+    function oBlur_1() {
+        var a = document.getElementsByClassName("user")[0].value;
+        console.log('a=' + a);
+        if (!a) { //用户框value值为空
+            document.getElementById("remind_1").innerHTML = "请输入用户名！";
+            document.getElementById("change_margin_1").style.marginBottom = 1 + "px";
+        } else { //用户框value值不为空
+            document.getElementById("remind_1").innerHTML = "";
+            document.getElementById("change_margin_1").style.marginBottom = 19 + "px";
+        }
+    }
+
+    //密码框失去焦点后验证value值
+    function oBlur_2() {
+        var b = document.getElementsByClassName("password")[0].value;
+        console.log('b=' + b);
+        if (!b) { //密码框value值为空
+            document.getElementById("remind_2").innerHTML = "请输入密码！";
+            document.getElementById("change_margin_2").style.marginBottom = 1 + "px";
+            document.getElementById("change_margin_3").style.marginTop = 2 + "px";
+        } else { //密码框value值不为空
+            document.getElementById("remind_2").innerHTML = "";
+            document.getElementById("change_margin_2").style.marginBottom = 19 + "px";
+            document.getElementById("change_margin_3").style.marginTop = 19 + "px";
+        }
+    }
+
+    //用户框获得焦点的隐藏提醒
+    function oFocus_1() {
+        document.getElementById("remind_1").innerHTML = "";
+        document.getElementById("change_margin_1").style.marginBottom = 19 + "px";
+    }
+
+    //密码框获得焦点的隐藏提醒
+    function oFocus_2() {
+        document.getElementById("remind_2").innerHTML = "";
+        document.getElementById("change_margin_2").style.marginBottom = 19 + "px";
+        document.getElementById("change_margin_3").style.marginTop = 19 + "px";
+    }
+
+    $('#change_margin_3').click(function(){
+        var a = document.getElementsByClassName("user")[0].value;
+        var b = document.getElementsByClassName("password")[0].value;
+        console.log(hex_md5(b));
+
+        console.log(a+b)
+
+        $.ajax({
+            url:"/API/login",
+            type:"post",
+            data: {"username":a, "password": hex_md5(b)},
+            success:function(data){
+                console.log("login:",data);
+                sessionStorage.setItem('token', JSON.parse(data)["token"]);
+                window.location.href='./taskSpace.html';
+            },
+            error: function(error){
+                console.log(error);
+            }
+        });
+    });
+</script>
+</body>
+</html>
